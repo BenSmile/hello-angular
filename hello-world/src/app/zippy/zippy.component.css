@@ -1,0 +1,27 @@
+
+
+.zippy{
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.zippy-heading{
+  font-weight: bold;
+  padding: 2px;
+}
+
+.zippy-body{
+  padding: 20px;
+}
+
+.expdanded{
+  background: #f0f0f0;
+}
+
+.fa{
+  float: right;
+}
+
+.fas{
+  float: right;
+}

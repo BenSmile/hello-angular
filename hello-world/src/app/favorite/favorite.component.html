@@ -1,0 +1,19 @@
+<app-boostrap-panel>
+  <div class="heading">
+    Some heading
+  </div>
+<!--  [class.fa-star]="isFavorite"-->
+<!--  [class.fa-star-half]="!isFavorite"-->
+  <div class="body">
+  <span class="fa" (click)="onFavorite()"
+
+        [ngClass]="{'fa-star': isFavorite, 'fa-star-half': !isFavorite}"></span>
+
+    <!--<input type="text" [(ngModel)]="title"/>-->
+
+    <!--<p>{{title | titleCase}}</p>-->
+    <!-- <span class="fa fa-star-half"></span> -->
+
+  </div>
+
+</app-boostrap-panel>

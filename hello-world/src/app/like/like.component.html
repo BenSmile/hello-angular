@@ -1,0 +1,32 @@
+<span *ngIf="false" class="fa fa-heart"
+      [class.highlighted]="isActive"
+      (click)="onClick()">
+</span>
+
+<span *ngIf="false"> {{likesCount}}</span>
+
+
+<button class="btn btn-primary" style="margin-right: 5px" (click)="onAddCourse()" >Add course</button>
+<button class="btn btn-success" (click)="onLoadCourse()">Load courses</button>
+<div *ngIf="courses.length>0; then courseList else noCourses"></div>
+<ng-template #courseList>
+  <h1>List of courses</h1>
+  <p *ngFor="let course of courses; even as isEven; trackBy trackCourses">
+    {{course.id}} - {{course.name}} <span *ngIf="isEven">(EVEN)</span>
+
+    <button class="btn btn-link" (click)="onRemove(course)">Remove</button>
+  </p>
+</ng-template>
+
+<ng-template #noCourses>
+  <h1> No courses yet!</h1>
+</ng-template>
+
+<!--<div [hidden]="courses.length>0">-->
+<!--  List of courses-->
+<!--</div>-->
+<!--<div [hidden]="courses.length==0">-->
+<!--  No courses yet!-->
+<!--</div>-->
+
+
