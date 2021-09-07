@@ -18,8 +18,9 @@ import { SingupFormComponent } from './singup-form/singup-form.component';
 import { NouveauCoursFormComponent } from './nouveau-cours-form/nouveau-cours-form.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { PostsComponent } from './posts/posts.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {PostService} from './services/post.service';
+import {ErrorIntercept} from './interceptors/ErrorIntercept';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,12 @@ import {PostService} from './services/post.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [PostService],
+  providers: [PostService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

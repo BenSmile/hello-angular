@@ -16,7 +16,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.postService.getPosts()
+    this.postService.getAll()
       .subscribe(response => {
         this.posts = response;
       });
@@ -25,25 +25,28 @@ export class PostsComponent implements OnInit {
   public createPost(input: HTMLInputElement): void {
     const post = {title: input.value};
     input.value = '';
-    this.postService.createPost(post)
+    this.posts.splice(0, 0, post);
+    this.postService.create(post)
       .subscribe(response => {
         post['id'] = response['id'];
-        this.posts.splice(0, 0, post);
+      }, error => {
+        this.posts.splice(0, 1);
       });
   }
 
   public updatePost(post): void {
-    this.postService.updatePost(post)
+    this.postService.update(post)
       .subscribe(response => {
         console.log(response);
       });
   }
 
   public deletePost(post): void {
-    this.postService.deletePost(post)
-      .subscribe(response => {
-        const index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
+    const index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+    this.postService.delete(post)
+      .subscribe(null, error => {
+        this.posts.splice(index, 0, post);
       });
   }
 }
