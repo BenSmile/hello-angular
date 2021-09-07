@@ -21,6 +21,7 @@ import { PostsComponent } from './posts/posts.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {PostService} from './services/post.service';
 import {ErrorIntercept} from './interceptors/ErrorIntercept';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {ErrorIntercept} from './interceptors/ErrorIntercept';
     SingupFormComponent,
     NouveauCoursFormComponent,
     ResetPasswordComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
